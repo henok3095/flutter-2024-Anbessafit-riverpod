@@ -1,94 +1,51 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../models/weight_gain_model.dart';
 
-class WeightGainData {
-  DateTime? startingDate;
-  DateTime? dueDate;
-  double weightGainGoal;
-  double calorieGoal;
-  double weightGain;
-  double burntCalorie;
-
-  WeightGainData({
-    this.startingDate,
-    this.dueDate,
-    this.weightGainGoal = 0,
-    this.calorieGoal = 0,
-    this.weightGain = 0,
-    this.burntCalorie = 0,
-  });
-}
-
-class WeightGainNotifier extends StateNotifier<WeightGainData> {
-  WeightGainNotifier() : super(WeightGainData());
+class WeightGainNotifier extends StateNotifier<WeightGainModel> {
+  WeightGainNotifier() : super(WeightGainModel());
 
   void updateStartingDate(DateTime date) {
-    state = WeightGainData(
-      startingDate: date,
-      dueDate: state.dueDate,
-      weightGainGoal: state.weightGainGoal,
-      calorieGoal: state.calorieGoal,
-      weightGain: state.weightGain,
-      burntCalorie: state.burntCalorie,
-    );
+    state = state.copyWith(startingDate: date);
   }
 
   void updateDueDate(DateTime date) {
-    state = WeightGainData(
-      startingDate: state.startingDate,
-      dueDate: date,
-      weightGainGoal: state.weightGainGoal,
-      calorieGoal: state.calorieGoal,
-      weightGain: state.weightGain,
-      burntCalorie: state.burntCalorie,
-    );
+    state = state.copyWith(dueDate: date);
   }
 
   void updateWeightGainGoal(double goal) {
-    state = WeightGainData(
-      startingDate: state.startingDate,
-      dueDate: state.dueDate,
-      weightGainGoal: goal,
-      calorieGoal: state.calorieGoal,
-      weightGain: state.weightGain,
-      burntCalorie: state.burntCalorie,
-    );
+    state = state.copyWith(weightGainGoal: goal, weightGainGoalError: null);
+  }
+
+  void setWeightGainGoalError(String error) {
+    state = state.copyWith(weightGainGoalError: error);
   }
 
   void updateCalorieGoal(double goal) {
-    state = WeightGainData(
-      startingDate: state.startingDate,
-      dueDate: state.dueDate,
-      weightGainGoal: state.weightGainGoal,
-      calorieGoal: goal,
-      weightGain: state.weightGain,
-      burntCalorie: state.burntCalorie,
-    );
+    state = state.copyWith(calorieGoal: goal, calorieGoalError: null);
   }
 
-  void updateWeightGain(double gain) {
-    state = WeightGainData(
-      startingDate: state.startingDate,
-      dueDate: state.dueDate,
-      weightGainGoal: state.weightGainGoal,
-      calorieGoal: state.calorieGoal,
-      weightGain: gain,
-      burntCalorie: state.burntCalorie,
-    );
+  void setCalorieGoalError(String error) {
+    state = state.copyWith(calorieGoalError: error);
   }
 
-  void updateBurntCalorie(double burnt) {
-    state = WeightGainData(
-      startingDate: state.startingDate,
-      dueDate: state.dueDate,
-      weightGainGoal: state.weightGainGoal,
-      calorieGoal: state.calorieGoal,
-      weightGain: state.weightGain,
-      burntCalorie: burnt,
-    );
+  void updateWeightGain(double weight) {
+    state = state.copyWith(weightGain: weight, weightGainError: null);
+  }
+
+  void setWeightGainError(String error) {
+    state = state.copyWith(weightGainError: error);
+  }
+
+  void updateBurntCalorie(double calorie) {
+    state = state.copyWith(calorie: calorie, calorieError: null);
+  }
+
+  void setCalorieError(String error) {
+    state = state.copyWith(calorieError: error);
   }
 }
 
 final weightGainProvider =
-    StateNotifierProvider<WeightGainNotifier, WeightGainData>(
-  (ref) => WeightGainNotifier(),
-);
+    StateNotifierProvider<WeightGainNotifier, WeightGainModel>((ref) {
+  return WeightGainNotifier();
+});

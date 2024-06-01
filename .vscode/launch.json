@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "UI",
+            "cwd": "flutter-2024-AnbessaFit-main\\UI",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "UI (profile mode)",
+            "cwd": "flutter-2024-AnbessaFit-main\\UI",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "UI (release mode)",
+            "cwd": "flutter-2024-AnbessaFit-main\\UI",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

@@ -21,6 +21,7 @@ final authProvider =
 
 class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
   final AuthRepository authRepository;
+  bool termsAgreed = false;
 
   AuthNotifier(this.authRepository) : super(AsyncValue.data(null));
 
@@ -59,5 +60,9 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
     state = AsyncValue.data(null);
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('jwt_token');
+  }
+
+  void setTermsAgreement(bool value) {
+    termsAgreed = value;
   }
 }

@@ -1,7 +1,7 @@
-// lib/main.dart
+import 'package:anbessafit/workout/presentation/addplan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:anbessafit/presentation/screens/addplan.dart';
+
 import 'package:anbessafit/presentation/screens/create_plan_page_weight_gain.dart';
 import 'package:anbessafit/presentation/screens/create_plan_page_weight_loss.dart';
 import 'package:anbessafit/presentation/screens/excercise.dart';
@@ -15,7 +15,6 @@ import 'package:anbessafit/presentation/screens/welocome_screen.dart';
 import 'package:anbessafit/presentation/screens/signin_screen.dart';
 import 'package:anbessafit/presentation/screens/signup_screen.dart';
 import 'package:anbessafit/presentation/screens/forget_password.dart';
-import 'package:anbessafit/presentation/screens/weight_gain_screen.dart';
 import 'package:anbessafit/presentation/screens/weight_loss_screen.dart';
 import 'package:anbessafit/presentation/screens/nutrition.dart';
 import 'package:anbessafit/presentation/screens/workoutplan.dart';
@@ -44,12 +43,14 @@ class MyApp extends StatelessWidget {
         '/HeightSelectionScreen': (context) => HeightSelectionScreen(),
         '/Home': (context) => HomePageHome(),
         '/WeightLossScreen': (context) => WeightLossScreen(),
-        '/WeightGainScreen': (context) => WeightGainScreen(),
+        '/WeightGainScreen': (context) =>
+            CreatePlanWeightGain(), // Use the prefix here
         '/NutritionPage': (context) => NutritionPage(),
-        '/WeightGainPage': (context) => WeightGainScreen(),
+        '/WeightGainPage': (context) =>
+            CreatePlanWeightGain(), // Use the prefix here
         '/WeightLossPage': (context) => WeightLossScreen(),
         '/Workoutplan': (context) => Workoutplan(),
-        '/Addplan': (context) => Addplan(),
+        '/Addplan': (context) => AddPlan(addWorkoutPlan: (Map<String, dynamic> ) {  },),
         '/ExercisePage': (context) => ExercisePage(),
         '/CreatePlanWeightGain': (context) => CreatePlanWeightGain(),
         '/CreatePlanWeightLoss': (context) => CreatePlanWeightLoss(),
